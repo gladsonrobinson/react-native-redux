@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import Notes  from '../../container/Notes';
+import Notes  from '../../containers/Notes';
 
 export default class Home extends React.Component {
   render() {
