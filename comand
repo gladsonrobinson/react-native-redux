@@ -1,0 +1,9 @@
+adb devices
+
+adb kill-server
+
+This is to connect adrooid phone with react-native server
+adb reverse tcp:8081 tcp:8081
+
+
+
