@@ -9,10 +9,9 @@ export default class Notes extends Component {
   }
 
   render() {
-    console.log("Heloooooooooooooo", this.props)
     return (
       <View style={styles.container}>
-        <FlatList data={[{key: 'a'},{key: 'b'},{key: 'a'}, {key: 'b'},{key: 'b'},{key: 'a'},{key: 'b'},{key: 'a'}, {key: 'b'},{key: 'b'},{key: 'a'},{key: 'b'},{key: 'a'}, {key: 'b'},{key: 'b'},{key: 'a'} ]}
+        <FlatList data={this.props.notes}
           numColumns={2}
           horizontal={false}
           renderItem={({item}) => <NoteItem note={item.key} />}/>

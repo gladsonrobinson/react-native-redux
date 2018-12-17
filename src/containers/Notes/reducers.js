@@ -6,7 +6,7 @@ export default NoteReducer = (state = initialState, action) => {
     switch (action.type) {
       case ADD_NOTE:
         return {
-          data: [...state.data, action.note]
+          data: [...state.notes, action.note]
         };
       default:
         return state;
