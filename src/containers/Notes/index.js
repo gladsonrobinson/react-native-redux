@@ -1,8 +1,15 @@
 import { connect } from "react-redux";
-import Notes from '../../components/Notes'
+import {Notes, AddEditNote} from '../../components';
+import {addNote} from './action';
 
 const mapStateToProps = state => ({
   notes: state.notes
 });
 
-export default connect(mapStateToProps)(Notes);
+const mapActionsToProps = {
+  addNote
+};
+
+export const NotesCtnr =  connect(mapStateToProps)(Notes);
+
+export const AddEditNoteCtnr = connect(mapStateToProps, mapActionsToProps)(AddEditNote);

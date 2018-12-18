@@ -1,3 +1,4 @@
 import Home from './Home';
+import AddNote from './AddNote';
 
-export {Home};
+export {Home, AddNote};
