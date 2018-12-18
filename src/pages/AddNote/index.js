@@ -1,15 +1,20 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button , StyleSheet} from "react-native";
 import {AddEditNoteCtnr}  from '../../containers/Notes';
 
 export default class AddNote extends React.Component {
   render() {
-      console.log('kkkkkkkkkkk', this.props)
     return (
-      <View>
+      <View style={styles.wraper}>
         <Text>Add Note</Text>
-        <AddEditNoteCtnr />
+        <AddEditNoteCtnr navigation={this.props.navigation} />
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  wraper: {
+    flex:1
+  }
+})

@@ -23,13 +23,10 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 20,
     height: 100,
-    margin: 1,
     padding: 10,
-    borderLeftWidth: 1,
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
-    borderRightWidth: 1,
-    borderRadius:5,
+    margin: 5,
+    borderWidth: 2,
+    borderRadius: 5,
   },
   noteText: {}
 })

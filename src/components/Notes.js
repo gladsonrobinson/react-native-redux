@@ -4,7 +4,6 @@ import NoteItem from './NoteItem';
 
 export default class Notes extends Component {
   render() {
-    console.log("all notessssssssss", this.props.notes)
     return (
       <View style={styles.container}>
         <FlatList data={this.props.notes}
@@ -20,6 +19,6 @@ export default class Notes extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    margin: 10
+    flex:1
   }
 });

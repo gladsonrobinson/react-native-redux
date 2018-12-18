@@ -2,14 +2,12 @@ import React , {PureComponent} from 'react';
 import {StyleSheet, TextInput, View, Button} from 'react-native';
 
 export default class AddEditNote extends PureComponent {
-    //const _onChangeText = text => notevalue = text;
     constructor(props) {
         super(props);
 
         this.state = {
             note: ''
         }
-        //console.log("helloooooooooooo",this.props)
     }
 
     _onChangeText = text => {
@@ -19,8 +17,8 @@ export default class AddEditNote extends PureComponent {
     }
 
     _saveNote = () => {
-         console.log("gladsssssssssssssssss",this.state.note)
-        this.props.addNote(this.state.note)
+        this.props.addNote(this.state.note);
+        this.props.navigation.navigate('Home');
     }
 
 
@@ -28,7 +26,8 @@ export default class AddEditNote extends PureComponent {
         return (
             <View>
                 <TextInput placeholder="Add your notes"
-                    onChangeText={this._onChangeText}></TextInput>
+                    onChangeText={this._onChangeText}
+                    autoFocus={true}></TextInput>
                 <Button title="SAVE"
                     onPress={this._saveNote}/>
             </View>
