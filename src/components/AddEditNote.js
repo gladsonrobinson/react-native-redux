@@ -10,9 +10,9 @@ export default class AddEditNote extends PureComponent {
         }
     }
 
-    _onChangeText = text => {
+    _onChangeText = note => {
         this.setState({
-            note: text
+            note
         });
     }
 
@@ -27,7 +27,9 @@ export default class AddEditNote extends PureComponent {
             <View>
                 <TextInput placeholder="Add your notes"
                     onChangeText={this._onChangeText}
-                    autoFocus={true}></TextInput>
+                    autoFocus={true}
+                    multiline={true}
+                    numberOfLines={4} />
                 <Button title="SAVE"
                     onPress={this._saveNote}/>
             </View>

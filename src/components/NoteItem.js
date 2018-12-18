@@ -20,9 +20,8 @@ export default class NoteItem extends React.PureComponent {
 
 const styles = StyleSheet.create({
   noteCtnr: {
-    flex: 1,
     fontSize: 20,
-    height: 100,
+    flexGrow: 1,
     padding: 10,
     margin: 5,
     borderWidth: 2,
