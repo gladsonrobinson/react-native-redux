@@ -6,7 +6,6 @@ export default class AddNote extends React.Component {
   render() {
     return (
       <View style={styles.wraper}>
-        <Text>Add Note</Text>
         <AddEditNoteCtnr navigation={this.props.navigation} />
       </View>
     );
