@@ -1,12 +1,17 @@
 import React from "react";
 import { View, Text, Button , StyleSheet} from "react-native";
-import {AddEditNoteCtnr}  from '../../containers/Notes';
+import NotesCtnr  from '../../containers/Notes';
+import {AddEditNote} from '../../components';
 
 export default class AddNote extends React.Component {
   render() {
     return (
       <View style={styles.wraper}>
-        <AddEditNoteCtnr navigation={this.props.navigation} />
+        <NotesCtnr>
+          {({addNote})=>{
+            return <AddEditNote addNote={addNote} navigation={this.props.navigation} />
+          }}
+        </NotesCtnr>
       </View>
     );
   }

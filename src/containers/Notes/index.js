@@ -1,5 +1,5 @@
+import {PureComponent} from 'react';
 import { connect } from "react-redux";
-import {Notes, AddEditNote} from '../../components';
 import {addNote} from './action';
 
 const mapStateToProps = state => ({
@@ -10,6 +10,11 @@ const mapActionsToProps = {
   addNote
 };
 
-export const NotesCtnr =  connect(mapStateToProps)(Notes);
+class Notes extends PureComponent {
+  render() {
+    const {notes, addNote} = this.props;
+    return this.props.children({notes, addNote});
+  }
+}
 
-export const AddEditNoteCtnr = connect(mapStateToProps, mapActionsToProps)(AddEditNote);
+export default connect(mapStateToProps, mapActionsToProps)(Notes);
