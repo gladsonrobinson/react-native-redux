@@ -1,13 +1,20 @@
 import {createStore} from 'redux';
 import AppReducer from './reducers';
+import {persistStore, persistReducer} from 'redux-persist';
+import storage from 'redux-persist/lib/storage'
 
 const initialState = { 
-    notes: [{id: 1, note: 'testn'},{id: 2, note: 'estv'},{id: 3, note: 'test'},{id: 4, note: 'hi'},{id: 5, note: 'you'},
-            {id: 6, note: 'iffd'},{id: 7, note: 'hfdsf'},{id: 8, note: 'adfd'},{id: 9, note: 'how'},{id: 11, note: 'are'} ]
+    notes: []
 };
 
-const store = createStore(AppReducer, initialState);
+const persistConfig = {
+    key: 'root',
+    storage
+};
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, AppReducer);
 
+const store = createStore(persistedReducer, initialState);
+const persistor = persistStore(store);
 
+export {store, persistor};
