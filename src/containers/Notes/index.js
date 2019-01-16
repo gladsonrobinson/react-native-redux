@@ -1,19 +1,20 @@
 import {PureComponent} from 'react';
 import { connect } from "react-redux";
-import {addNote} from './action';
+import {addNote, editNote} from './action';
 
 const mapStateToProps = state => ({
   notes: state.notes
 });
 
 const mapActionsToProps = {
-  addNote
+  addNote,
+  editNote
 };
 
 class Notes extends PureComponent {
   render() {
-    const {notes, addNote} = this.props;
-    return this.props.children({notes, addNote});
+    const {notes, addNote, editNote} = this.props;
+    return this.props.children({notes, addNote, editNote});
   }
 }
 

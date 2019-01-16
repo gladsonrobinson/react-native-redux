@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Button } from "react-native";
 import NotesCtnr  from '../../containers/Notes';
 import style from './styles';
-import {Notes} from "../../components";
+import {Notes, AddNoteButton} from "../../components";
 
 export default class Home extends React.Component {
   render() {
@@ -10,10 +10,10 @@ export default class Home extends React.Component {
       <View style={style.wrapper}>
         <NotesCtnr>
           {({notes})=>{
-            return <Notes notes={notes} />
+            return <Notes notes={notes} navigation={this.props.navigation} />
           }}
         </NotesCtnr>
-        <Button style={style.addNoteBtn} title="Add Note" onPress={()=> {this.props.navigation.navigate('AddNote')}}></Button>
+        <AddNoteButton onPress={() => {this.props.navigation.navigate('AddNote')}} />
       </View>
     );
   }

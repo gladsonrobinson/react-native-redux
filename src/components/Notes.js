@@ -3,6 +3,17 @@ import {FlatList, StyleSheet, Text, View} from 'react-native';
 import NoteItem from './NoteItem';
 
 export default class Notes extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this._onNotePress = this._onNotePress.bind(this);
+  }
+
+  _onNotePress(note, index) {
+    this.props.navigation.navigate('AddNote', { note, index });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -10,7 +21,7 @@ export default class Notes extends Component {
           numColumns={2}
           horizontal={false}
           keyExtractor={item => item.id}
-          renderItem={({item}) => <NoteItem key={item.id} note={item.note} />}/>
+          renderItem={({item,index}) => <NoteItem key={item.id} note={item.note} index={index} onPress={this._onNotePress} />}/>
       </View>
     );
   }
