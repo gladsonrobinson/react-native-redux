@@ -1,4 +1,4 @@
-import { GET_ALL_NOTES, ADD_NOTE, EDIT_NOTE } from "./constants";
+import { GET_ALL_NOTES, ADD_NOTE, EDIT_NOTE, DELETE_NOTE } from "./constants";
 
 export const addNote = (note, noteId) => ({
     type: ADD_NOTE,
@@ -15,6 +15,15 @@ export const editNote = (note, index) => ({
         index
     }
 });
+
+
+export const deleteNote = (index) => ({
+    type: DELETE_NOTE,
+    payload: {
+        index
+    }
+});
+
 
 export const VisibilityFilters = {
     SHOW_ALL: 'SHOW_ALL',

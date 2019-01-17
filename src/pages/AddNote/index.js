@@ -8,8 +8,8 @@ export default class AddNote extends React.Component {
     return (
       <View style={styles.wraper}>
         <NotesCtnr>
-          {({addNote, editNote})=>{
-            return <AddEditNote addNote={addNote} editNote={editNote} navigation={this.props.navigation} />
+          {({addNote, editNote, deleteNote})=>{
+            return <AddEditNote addNote={addNote} editNote={editNote} deleteNote={deleteNote}  navigation={this.props.navigation} />
           }}
         </NotesCtnr>
       </View>

@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   addNoteBtn: {
     borderWidth:1,
     borderColor:'rgba(0,0,0,0.2)',
-    backgroundColor: 'rgba(183, 28, 27, .7)',
+    backgroundColor: 'rgba(63, 186, 18, .7)',
     alignItems:'center',
     justifyContent:'center',
     width:70,
