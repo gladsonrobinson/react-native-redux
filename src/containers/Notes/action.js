@@ -1,4 +1,5 @@
 import { GET_ALL_NOTES, ADD_NOTE, EDIT_NOTE, DELETE_NOTE } from "./constants";
+import {database} from "../../services/firebase"
 
 export const addNote = (note, noteId) => ({
     type: ADD_NOTE,
@@ -23,6 +24,18 @@ export const deleteNote = (index) => ({
         index
     }
 });
+
+export function watchNoteAddEvent(dispatch) {
+    database.ref(`/`).on('child_added', (snap) => {
+        dispatch(addTask(snap.val()));
+    });
+} 
+
+export function watchNoteDeleteEvent(dispatch) {
+    database.ref(`/`).on('child_removed', (snap) => {
+        dispatch(removeTask(snap.val()));
+    });
+}
 
 
 export const VisibilityFilters = {
