@@ -6,7 +6,7 @@ const mapStateToProps = state => ({
   notes: state.notes
 });
 
-const mapActionsToProps = {
+const mapDispatchToProps = {
   addNote,
   editNote,
   deleteNote
@@ -19,4 +19,4 @@ class Notes extends PureComponent {
   }
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(Notes);
+export default connect(mapStateToProps, mapDispatchToProps)(Notes);
