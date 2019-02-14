@@ -1,5 +1,8 @@
 import { GET_ALL_NOTES, ADD_NOTE, EDIT_NOTE, DELETE_NOTE } from "./constants";
-import {database} from "../../services/firebase"
+import {database} from "../../services/firebase";
+
+const notesRef = database.ref('users').child("user1").child("notes");
+
 
 export const addNoteAction = (note, noteId) => ({
     type: ADD_NOTE,
@@ -25,15 +28,15 @@ export const deleteNote = (index) => ({
     }
 });
 
-const ref = database.ref('notes');
-
 
 export const addNote = (note, noteId) => {
-       dispatch => {
-        ref.push({note, noteId});
+    return dispatch => {
+        notesRef.push({note, timestamp: new Date().getTime().toString()});
         dispatch(addNoteAction(note, noteId));
     }
 }
+
+
 
 
 

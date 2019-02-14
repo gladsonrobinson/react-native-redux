@@ -18,6 +18,12 @@ const provider = new firebase.auth.GoogleAuthProvider();
 
 export const database = firebase.database();
 
+
+export const signInAnonymously = () => {
+  return firebase.auth().signInAnonymously();
+}
+
+
 export const googleSignIn = () => {
   return firebase.auth().signInWithPopup(provider).then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -39,5 +45,7 @@ export const googleSignIn = () => {
     // ...
   });
 }
+
+
 
  

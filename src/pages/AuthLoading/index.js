@@ -1,20 +1,22 @@
 import React from 'react';
 import {View, Text, ActivityIndicator, StyleSheet, StatusBar, AsyncStorage} from 'react-native';
-
+import {signInAnonymously} from '../../services/firebase';
 export default class AuthLoading extends React.Component {
 
   constructor(props) {
     super(props);
-    this._checkAuthentication();
   }
 
-  _checkAuthentication = async() => {
-    const userToken = await AsyncStorage.getItem('logintoken');
+  componentDidMount() {
+    //const userToken = await AsyncStorage.getItem('logintoken');
     
-    this.props.navigation.navigate(userToken ? 'App' : 'App')
+    signInAnonymously().then(user => {
+      console.log("hellooo", user)
+      //if()
+      //this.props.navigation.navigate(userToken ? 'App' : 'App')
+    });
   }
   
-
   render() {
     return (
       <View style={style.ctnr}>
