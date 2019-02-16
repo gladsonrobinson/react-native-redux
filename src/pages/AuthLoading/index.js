@@ -7,13 +7,10 @@ export default class AuthLoading extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    //const userToken = await AsyncStorage.getItem('logintoken');
-    
+  componentDidMount() {    
     signInAnonymously().then(user => {
-      console.log("hellooo", user)
-      //if()
-      //this.props.navigation.navigate(userToken ? 'App' : 'App')
+      if(user)
+        this.props.navigation.navigate(user ? 'App' : 'App')
     });
   }
   

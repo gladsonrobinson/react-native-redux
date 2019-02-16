@@ -20,9 +20,18 @@ export const database = firebase.database();
 
 
 export const signInAnonymously = () => {
-  return firebase.auth().signInAnonymously();
+  return new Promise((resolve, reject) => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        resolve(user)
+      } else {
+        firebase.auth().signInAnonymously().catch(error => {
+          reject()
+        })
+      }
+    })
+  })
 }
-
 
 export const googleSignIn = () => {
   return firebase.auth().signInWithPopup(provider).then((result) => {

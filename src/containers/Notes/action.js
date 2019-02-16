@@ -1,8 +1,12 @@
 import { GET_ALL_NOTES, ADD_NOTE, EDIT_NOTE, DELETE_NOTE } from "./constants";
 import {database} from "../../services/firebase";
 
-const notesRef = database.ref('users').child("user1").child("notes");
+let notesRef;
 
+
+const _setReference = userid => {
+    notesRef = database.ref('users').child(userid).child("notes");
+}
 
 export const addNoteAction = (note, noteId) => ({
     type: ADD_NOTE,
@@ -36,9 +40,13 @@ export const addNote = (note, noteId) => {
     }
 }
 
-
-
-
-
-
-
+export const fetchNoteFromUserId = (userId) => {
+    _setReference(userId);
+    
+    return dispatch => {
+        notesRef.once('value', noteSnapshot => {
+            console.log("helloooooooo", noteSnapshot.val())
+            //dispatch(setNotesAction(not));
+        });
+    }
+}
