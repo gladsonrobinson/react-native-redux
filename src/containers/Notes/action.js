@@ -8,12 +8,9 @@ const _setReference = userid => {
     notesRef = database.ref('users').child(userid).child("notes");
 }
 
-export const addNoteAction = (note, noteId) => ({
+export const addNoteAction = (note) => ({
     type: ADD_NOTE,
-    payload: {
-        id: noteId,
-        note
-    }
+    payload: note
 });
 
 export const editNote = (note, index) => ({
@@ -42,18 +39,27 @@ const setNotesAction = (notes) => ({
 
 export const addNote = (note, noteId) => {
     return dispatch => {
-        notesRef.push({note, timestamp: new Date().getTime().toString()});
-        dispatch(addNoteAction(note, noteId));
+        let ref = notesRef.push({note});
+        console.log("newKeynewKeynewKeygladson", ref.key)
+        let newnote = {
+            note,
+            timestamppppppp: new Date().getTime().toString(),
+            id: ref.key
+        };
+        notesRef.set(newnote);
+        dispatch(addNoteAction(newnote));
     }
 }
 
+let notes = [];
 export const fetchNoteFromUserId = (userId) => {
     _setReference(userId);
     
     return dispatch => {
         return notesRef.once('value', noteSnapshot => {
-            console.log("helloooooooo", noteSnapshot.val())
-            dispatch(setNotesAction(noteSnapshot.val()));
+            let ArrayOfNotes = Object.values(noteSnapshot.val())
+            console.log("helloooooooo", ArrayOfNotes)
+            dispatch(setNotesAction(notes));
         });
     }
 }
