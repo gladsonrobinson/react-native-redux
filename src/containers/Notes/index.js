@@ -1,6 +1,6 @@
 import {PureComponent} from 'react';
 import { connect } from "react-redux";
-import {addNote, editNote, deleteNote} from './action';
+import {addNote, editNote, deleteNote, fetchNoteFromUserId} from './action';
 
 const mapStateToProps = state => ({
   notes: state.notes
@@ -20,3 +20,5 @@ class Notes extends PureComponent {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notes);
+
+export const fetchNoteDispatch = connect(null, {fetchNoteFromUserId});

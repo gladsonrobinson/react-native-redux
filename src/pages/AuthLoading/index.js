@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Text, ActivityIndicator, StyleSheet, StatusBar, AsyncStorage} from 'react-native';
 import {signInAnonymously} from '../../services/firebase';
-export default class AuthLoading extends React.Component {
+import {fetchNoteDispatch}  from '../../containers/Notes';
+class AuthLoading extends React.Component {
 
   constructor(props) {
     super(props);
@@ -9,8 +10,12 @@ export default class AuthLoading extends React.Component {
 
   componentDidMount() {    
     signInAnonymously().then(user => {
-      if(user)
-        this.props.navigation.navigate(user ? 'App' : 'App')
+      console.log("ffffffffffffffffffffffffffffffff", user.uid)
+      if(user){
+        this.props.fetchNoteFromUserId(user.uid).then(() => {
+          this.props.navigation.navigate('App')
+        });
+      }
     });
   }
   
@@ -32,3 +37,5 @@ const style = StyleSheet.create({
     alignItems: 'center',
   }
 })
+
+export default fetchNoteDispatch(AuthLoading);

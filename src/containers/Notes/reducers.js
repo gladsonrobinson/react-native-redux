@@ -1,6 +1,6 @@
-import { GET_ALL_NOTES, ADD_NOTE, EDIT_NOTE, DELETE_NOTE } from "./constants";
+import { SET_NOTE, ADD_NOTE, EDIT_NOTE, DELETE_NOTE } from "./constants";
 
-let initialState = [];
+let initialState = {};
 
 export default NoteReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -13,6 +13,8 @@ export default NoteReducer = (state = initialState, action) => {
         case DELETE_NOTE:
           state.splice(action.payload.index, 1);
           return [...state];
+        case SET_NOTE:
+          return action.payload.notes;
       default:
         return state;
     }

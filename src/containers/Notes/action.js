@@ -1,4 +1,4 @@
-import { GET_ALL_NOTES, ADD_NOTE, EDIT_NOTE, DELETE_NOTE } from "./constants";
+import { SET_NOTE, ADD_NOTE, EDIT_NOTE, DELETE_NOTE } from "./constants";
 import {database} from "../../services/firebase";
 
 let notesRef;
@@ -32,6 +32,13 @@ export const deleteNote = (index) => ({
     }
 });
 
+const setNotesAction = (notes) => ({
+    type: SET_NOTE,
+    payload: {
+        notes
+    }
+});
+
 
 export const addNote = (note, noteId) => {
     return dispatch => {
@@ -44,9 +51,9 @@ export const fetchNoteFromUserId = (userId) => {
     _setReference(userId);
     
     return dispatch => {
-        notesRef.once('value', noteSnapshot => {
+        return notesRef.once('value', noteSnapshot => {
             console.log("helloooooooo", noteSnapshot.val())
-            //dispatch(setNotesAction(not));
+            dispatch(setNotesAction(noteSnapshot.val()));
         });
     }
 }
