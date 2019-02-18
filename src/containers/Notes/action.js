@@ -21,7 +21,6 @@ export const editNote = (note, index) => ({
     }
 });
 
-
 export const deleteNote = (index) => ({
     type: DELETE_NOTE,
     payload: {
@@ -36,30 +35,26 @@ const setNotesAction = (notes) => ({
     }
 });
 
-
 export const addNote = (note, noteId) => {
     return dispatch => {
-        let ref = notesRef.push({note});
-        console.log("newKeynewKeynewKeygladson", ref.key)
+        let ref = notesRef.push();
         let newnote = {
             note,
             timestamppppppp: new Date().getTime().toString(),
             id: ref.key
         };
-        notesRef.set(newnote);
+        ref.set(newnote);
         dispatch(addNoteAction(newnote));
     }
 }
 
-let notes = [];
 export const fetchNoteFromUserId = (userId) => {
     _setReference(userId);
-    
     return dispatch => {
         return notesRef.once('value', noteSnapshot => {
             let ArrayOfNotes = Object.values(noteSnapshot.val())
-            console.log("helloooooooo", ArrayOfNotes)
-            dispatch(setNotesAction(notes));
+            dispatch(setNotesAction(ArrayOfNotes));
         });
     }
 }
+
